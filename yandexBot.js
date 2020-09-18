@@ -27,7 +27,7 @@ let timerId;
 
 if (searchButton != undefined) {
   document.cookie = "site=" + site;
-} else if (location.hostname == "yandex.ru") {
+} else if (location.hostname == "https://yandex.ru") {
   site = getCookie("site");
 } else {
   site = location.hostname;
@@ -50,7 +50,7 @@ if (searchButton != undefined) {
     let index = getRandom(0, links.length);
     if (getRandom(0, 101) >= 80) {
       setTimeout(() => {
-      location.href = 'https://google.com';
+      location.href = 'https://yandex.ru/';
     } , getRandom(3000, 7000));
 
     } else if (links[index].href.indexOf(site) != -1)
