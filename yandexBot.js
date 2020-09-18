@@ -20,7 +20,7 @@ let yandexNextClick = document.getElementsByClassName('pager__item_kind_next').v
 let yandexStopClick = document.getElementsByClassName('pager_items').innerText;
 let keywords = sites[site];
 let keyword = keywords[getRandom(0, keywords.length)];
-let searchButton = document.getElementsByClassName('button_theme_websearch ')[0];
+let searchButton = document.getElementsByClassName('mini-suggest__button')[0];
 let i = 0;
 let links = document.links;
 let timerId;
