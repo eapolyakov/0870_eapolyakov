@@ -1,5 +1,5 @@
-//==UserScript==
-// @name         Bot for google
+/==UserScript==
+// @name         Bot for yandex
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
@@ -15,19 +15,19 @@ let sites = {
   "crushdrummers.ru": ['Барабанное шоу', 'Заказать барабанное шоу', 'Шоу барабанщиков в Москве']
 };
 let site = Object.keys(sites)[getRandom(0, Object.keys(sites).length)];
-let yandexInput = document.getElementById('text');
-let yandexNextClick = document.getElementsByClassName('pager__item_kind_next').value;
-let yandexStopClick = document.getElementsByClassName('pager_items').innerText;
+let yandexInput = document.getElementsByName('text')[0];
+let yandexNextClick = document.getElementsByClassName('pager__item pager__item_kind_next');
+let yandexStopClick = document.getElementsByClassName("pager__item_current_yes pager__item_kind_page").innerText;
 let keywords = sites[site];
 let keyword = keywords[getRandom(0, keywords.length)];
-let searchButton = document.getElementsByClassName('mini-suggest__button')[0];
+let searchButton = document.getElementsByClassName('mini-suggest__button-cell')[0].click;
 let i = 0;
 let links = document.links;
 let timerId;
 
 if (searchButton != undefined) {
   document.cookie = "site=" + site;
-} else if (location.hostname == "https://yandex.ru") {
+} else if (location.hostname == "https://yandex.ru/") {
   site = getCookie("site");
 } else {
   site = location.hostname;
@@ -43,7 +43,7 @@ if (searchButton != undefined) {
       clearInterval(timerId);
       searchButton.click();
     }
-  }, 100);
+  }, 200);
 
 } else if (location.hostname == site) {
   setInterval(() => {
@@ -51,11 +51,11 @@ if (searchButton != undefined) {
     if (getRandom(0, 101) >= 80) {
       setTimeout(() => {
       location.href = 'https://yandex.ru/';
-    } , getRandom(3000, 7000));
+    } , getRandom(300, 700));
 
     } else if (links[index].href.indexOf(site) != -1)
       links[index].click();
-  }, getRandom(3000, 7000));
+  }, getRandom(300, 700));
 
 } else {
   let nextYandexPage = true;
@@ -66,12 +66,12 @@ if (searchButton != undefined) {
       nextYandexPage = false;
       setTimeout(() => {
         link.click();
-      }, getRandom(1000, 4000));
+      }, getRandom(100, 400));
       break;
     }
   }
 
-  if (document.querySelector(".pager__item_current_yes").innerText == "8") {
+  if (yandexStopClick == "8") {
     nextYandexPage = false;
     location.href = 'https://yandex.ru/';
   }
@@ -79,7 +79,7 @@ if (searchButton != undefined) {
   if (nextYandexPage) {
     setTimeout(() => {
       yandexNextClick.click();
-    }, getRandom(1000, 4000));
+    }, getRandom(100, 400));
   }
 }
 
@@ -92,3 +92,4 @@ function getCookie(name) {
     "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
   ));
   return matches ? decodeURIComponent(matches[1]) : undefined;
+}
