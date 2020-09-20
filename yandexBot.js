@@ -1,4 +1,4 @@
-/==UserScript==
+//==UserScript==
 // @name         Bot for yandex
 // @namespace    http://tampermonkey.net/
 // @version      0.1
@@ -20,7 +20,7 @@ let yandexNextClick = document.getElementsByClassName('pager__item pager__item_k
 let yandexStopClick = document.getElementsByClassName("pager__item_current_yes pager__item_kind_page").innerText;
 let keywords = sites[site];
 let keyword = keywords[getRandom(0, keywords.length)];
-let searchButton = document.getElementsByClassName('mini-suggest__button-cell')[0].click;
+let searchButton = document.getElementsByClassName('mini-suggest__button-cell')[0];
 let i = 0;
 let links = document.links;
 let timerId;
@@ -47,13 +47,10 @@ if (searchButton != undefined) {
 
 } else if (location.hostname == site) {
   setInterval(() => {
-    let index = getRandom(0, links.length);
-    if (getRandom(0, 101) >= 80) {
-      setTimeout(() => {
-      location.href = 'https://yandex.ru/';
-    } , getRandom(300, 700));
-
-    } else if (links[index].href.indexOf(site) != -1)
+      let index = getRandom(0, links.length);
+      if (getRandom(0, 101) >= 80) {
+        location.href = 'https://yandex.ru/';
+      } else if (links[index].href.indexOf(site) != -1)
       links[index].click();
   }, getRandom(300, 700));
 
