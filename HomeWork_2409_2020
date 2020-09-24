@@ -32,8 +32,8 @@ class Person{
   function getFamily(){
     return "
     My name is: ".$this -> getName(). ", i'm " .$this -> getAge(). " y/o <br>
-    My mother's name is: ".$this -> getMother() -> getName(). ", she's " .$this -> getMother() -> getAge()." y/o <br>
-    My father's name is: ".$this -> getFather() -> getName(). ", he's " .$this -> getFather() -> getAge()." y/o <br>
+    My mother name is: ".$this -> getMother() -> getName(). ", she's " .$this -> getMother() -> getAge()." y/o <br>
+    My father name is: ".$this -> getFather() -> getName(). ", he's " .$this -> getFather() -> getAge()." y/o <br>
     My mother's mother name is: ".$this -> getMother() -> getMother() -> getName(). ", she's " .$this -> getMother() -> getMother() ->  getAge()." y/o <br>
     My mother's father name is: ".$this -> getMother() -> getFather() -> getName(). ", he's " .$this -> getMother() -> getFather() ->  getAge()." y/o <br>
     My father's mother name is: ".$this -> getFather() -> getMother() -> getName(). ", she's " .$this -> getFather() -> getMother() ->  getAge()." y/o <br>
