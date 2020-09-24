@@ -1,0 +1,58 @@
+<?php
+class Person{
+  private $name;
+  private $lastname;
+  private $age;
+  private $mother;
+  private $father;
+
+  function __construct($name, $lastname, $age, $mother = null, $father = null){
+    $this -> name = $name;
+    $this -> lastname = $lastname;
+    $this -> age = $age;
+    $this -> mother = $mother;
+    $this -> father = $father;
+    $this -> grandmother = $grandmother;
+    $this -> grandfather = $grandfather;
+
+  }
+
+  function getName(){
+    return $this -> name;
+  }
+  function getAge(){
+    return $this -> age;
+  }
+  function getMother(){
+    return $this -> mother;
+  }
+  function getFather(){
+    return $this -> father;
+  }
+  function getFamily(){
+    return "
+    My name is: ".$this -> getName(). ", i'm " .$this -> getAge(). " y/o <br>
+    My mother's name is: ".$this -> getMother() -> getName(). ", she's " .$this -> getMother() -> getAge()." y/o <br>
+    My father's name is: ".$this -> getFather() -> getName(). ", he's " .$this -> getFather() -> getAge()." y/o <br>
+    My mother's mother name is: ".$this -> getMother() -> getMother() -> getName(). ", she's " .$this -> getMother() -> getMother() ->  getAge()." y/o <br>
+    My mother's father name is: ".$this -> getMother() -> getFather() -> getName(). ", he's " .$this -> getMother() -> getFather() ->  getAge()." y/o <br>
+    My father's mother name is: ".$this -> getFather() -> getMother() -> getName(). ", she's " .$this -> getFather() -> getMother() ->  getAge()." y/o <br>
+    My father's father name is: ".$this -> getFather() -> getFather() -> getName(). ", he's " .$this -> getFather() -> getFather() ->  getAge()." <br>
+
+    ";
+
+
+
+
+  }
+}
+
+$igor = new Person("Igor", "Petrov", 68);//дед по маме
+$anna = new Person("Anna", "Petrova", 60);//babka po mame
+$zigmund = new Person("Zigmund", "Ivanov", "dead");//ded po pape
+$alla = new Person("Alla", "Ivanova", 69);//babka po pape
+$alex = new Person("Alex", "Ivanov", 42, $alla, $zigmund);//otec
+$olga = new Person("Olga","Ivanova", 42, $anna, $igor);//mat'
+$valera = new Person("Valera", "Ivanov", 17, $olga, $alex);
+echo $valera -> getFamily();
+?>
